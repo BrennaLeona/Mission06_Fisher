@@ -1,0 +1,72 @@
+﻿@model Form
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewData["Title"] = "Add a Movie";
+}
+<h1 class="title">@ViewData["Title"]</h1>
+
+<div class="form">
+    <br />
+    <br />
+    <form method="post">
+        <!--Getting movie info-->
+        <label asp-for="Category">Category: </label>
+        <select asp-for="Category">
+            <option>Action/Adventure</option>
+            <option>Comedy</option>
+            <option>Drama</option>
+            <option>Family</option>
+            <option>Horror/Suspense</option>
+            <option>Miscellaneous</option>
+            <option>Television</option>
+            <option>VHS</option>
+        </select>
+        <br />
+        <label asp-for="Title">Title: </label>
+        <input asp-for="Title"/>
+        <br />
+        <label asp-for="Year">Release Year: </label>
+        <input asp-for="Year" />
+        <br />
+        <label asp-for="Director">Primary Director: </label>
+        <input asp-for="Director" />
+        <br />
+        <label asp-for="Rating">Rating: </label>
+        <select asp-for="Rating">
+            <option>G</option>
+            <option>PG</option>
+            <option>PG-13</option>
+            <option>R</option>
+            <option>NR</option>
+            <option>UR</option>
+            <option>TV-G</option>
+            <option>TV-14</option>
+            <option>TV-PG</option>
+            <option>TV-Y7</option>
+            <option>TV-MA</option>
+        </select>
+        <br />
+        <!--These fields are not required-->
+        <label asp-for="Edited">Edited</label>
+        <select asp-for="Edited">
+            <option value="false">No</option> <!--Default is no so if left null, No is assumed-->
+            <option value="true">Yes</option>
+        </select>
+        <br />
+        <label asp-for="LentTo">Lent to: </label>
+        <input asp-for="LentTo" />
+        <br />
+        <label asp-for="Notes">Notes: </label>
+        <input asp-for="Notes" />
+        <br />
+        <br />
+
+        <button type="submit">Add Movie</button>
+    </form>
+    <br />
+    <br />
+</div>
