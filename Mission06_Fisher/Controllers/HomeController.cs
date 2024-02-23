@@ -36,3 +36,5 @@ namespace Mission06_Fisher.Controllers
         }
     }
 }
+//var movies = _context.Movies.Include("Category")
+//    .ToList();
