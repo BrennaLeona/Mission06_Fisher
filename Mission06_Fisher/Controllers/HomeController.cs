@@ -59,7 +59,7 @@ namespace Mission06_Fisher.Controllers
             return View(movieslist);
         }
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int id) //Edit (To form)
         {
             var recordToEdit = _context.Movies
                 .Single(x => x.MovieId == id);
@@ -71,7 +71,7 @@ namespace Mission06_Fisher.Controllers
             return View("MovieForm", recordToEdit);
         }
         [HttpPost]
-        public IActionResult Edit(Movie updatedInfo)
+        public IActionResult Edit(Movie updatedInfo) //Edit (To Collection)
         {
             _context.Update(updatedInfo);
             _context.SaveChanges();
@@ -79,7 +79,7 @@ namespace Mission06_Fisher.Controllers
             return RedirectToAction("Collection");
         }
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int id) //Confirm Delete Request
         {
             var recordToDelete = _context.Movies
                 .Single(x => x.MovieId == id);
@@ -87,7 +87,7 @@ namespace Mission06_Fisher.Controllers
             return View(recordToDelete);
         }
         [HttpPost]
-        public IActionResult Delete(Movie recordToDelete)
+        public IActionResult Delete(Movie recordToDelete) //Delete (To Collection
         {
             _context.Movies.Remove(recordToDelete);
             _context.SaveChanges();

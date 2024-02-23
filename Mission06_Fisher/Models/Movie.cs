@@ -8,7 +8,8 @@ namespace Mission06_Fisher.Models
         [Key]
         [Required]
         public int MovieId { get; set; }
-        [ForeignKey("Category")] //Connects to other class
+        [ForeignKey("CategoryId")] //Connects to other class
+        [Required(ErrorMessage = "Please select a Category")] //Required to display table
         public int? CategoryId { get; set; }
         public Category? Category { get; set; }
         [Required(ErrorMessage = "Please provide a title for the movie")]

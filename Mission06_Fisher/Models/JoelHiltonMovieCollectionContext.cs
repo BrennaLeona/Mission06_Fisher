@@ -12,7 +12,7 @@ namespace Mission06_Fisher.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>().HasData(
+            modelBuilder.Entity<Category>().HasData( //Add Category Names
                     new Category { CategoryId = 1, CategoryName = "Miscellaneous" },
                     new Category { CategoryId = 2, CategoryName = "Drama" },
                     new Category { CategoryId = 3, CategoryName = "Television" },
