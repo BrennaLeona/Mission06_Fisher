@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Mission06_Fisher.Models;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mission06_Fisher.Controllers
 {
@@ -11,7 +12,7 @@ namespace Mission06_Fisher.Controllers
         {
             _context = FormName;
         }
-
+        //Regular displays and get requests
         public IActionResult Index()
         {
             return View();
@@ -27,21 +28,19 @@ namespace Mission06_Fisher.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult MovieForm(Form response)
+        public IActionResult MovieForm(Movie response) //Form posts - adding a record
         {
-            _context.Movies.Add(response); //Adding the record
+            _context.Movies.Add(response);
             _context.SaveChanges();
 
             return View("Confirmation", response);
         }
-        public IActionResult Collection()
+        public IActionResult Collection() //Display Collection from any other view
         {
-            var movieslist = _context.Movies//.Include("Categories")
+            var movieslist = _context.Movies.Include("Category")
                 .OrderBy(x => x.Title).ToList();
 
             return View(movieslist);
         }
     }
 }
-//var movies = _context.Movies.Include("Category")
-//    .ToList();
