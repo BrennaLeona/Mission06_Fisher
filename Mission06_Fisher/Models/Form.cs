@@ -7,23 +7,15 @@ namespace Mission06_Fisher.Models
         [Key]
         public int FormID { get; set; }
         public string Category { get; set; }
-        public string Title { get; set; }
-        public int Year { get; set; }
+        public string Title { get; set; } //Extra Required
+        [Range(1888, int.MaxValue, ErrorMessage = "Year cannot be before 1888.")] //Limit year choices
+        public int Year { get; set; } //Extra Required
         public string Director { get; set; }
         public string Rating { get; set; }
-        //These 3 are not required
-        public bool? Edited { get; set; }
+        public bool Edited { get; set; } //Extra Required
         public string? LentTo { get; set; }
+        public bool CopiedToPlex { get; set; } //Extra Required
         [StringLength(25)] //Up to 25 characters
         public string? Notes { get; set; }
     }
 }
-//Movie Form Notes:
-//    Category(Miscellaneous, Drama, Television, Horror / Suspense, Comedy, Family, Action / Adventure, ?)
- //   Title(input)
-   // Year(int)
-//    Director(input)
-  //  Rating field(G, PG, PG-13, R, NR, TV-14, TV-PG, TV-Y7, UR, TV-G, ?)
-    //Edited field(yes/no) **Not required
-//    Lent To(input) **Not required
-  //  Notes(input - max 25 characters) * *Not required

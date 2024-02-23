@@ -53,13 +53,18 @@
         <!--These fields are not required-->
         <label asp-for="Edited">Edited</label>
         <select asp-for="Edited">
-            <option value="false">No</option> <!--Default is no so if left null, No is assumed-->
+            <option value="false">No</option>
             <option value="true">Yes</option>
         </select>
         <br />
         <label asp-for="LentTo">Lent to: </label>
         <input asp-for="LentTo" />
         <br />
+        <label asp-for="CopiedToPlex">Has it been copied to Plex?</label>
+        <select asp-for="CopiedToPlex">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
         <label asp-for="Notes">Notes: </label>
         <input asp-for="Notes" />
         <br />

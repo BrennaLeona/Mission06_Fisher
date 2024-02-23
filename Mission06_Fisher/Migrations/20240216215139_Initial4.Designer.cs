@@ -10,7 +10,7 @@ using Mission06_Fisher.Models;
 
 namespace Mission06_Fisher.Migrations
 {
-    [DbContext(typeof(MovieFormContext))]
+    [DbContext(typeof(JoelHiltonMovieCollectionContext))]
     [Migration("20240216215139_Initial4")]
     partial class Initial4
     {

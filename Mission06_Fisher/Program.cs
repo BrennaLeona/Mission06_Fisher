@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //Connect to Database
-builder.Services.AddDbContext<MovieFormContext>(options =>
+builder.Services.AddDbContext<JoelHiltonMovieCollectionContext>(options =>
 {
     options.UseSqlite(builder.Configuration["ConnectionStrings:FormConnection"]);
 });

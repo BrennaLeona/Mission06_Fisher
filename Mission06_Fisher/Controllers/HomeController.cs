@@ -6,8 +6,8 @@ namespace Mission06_Fisher.Controllers
 {
     public class HomeController : Controller
     {
-        private MovieFormContext _context;
-        public HomeController(MovieFormContext FormName)
+        private JoelHiltonMovieCollectionContext _context;
+        public HomeController(JoelHiltonMovieCollectionContext FormName)
         {
             _context = FormName;
         }
@@ -29,10 +29,17 @@ namespace Mission06_Fisher.Controllers
         [HttpPost]
         public IActionResult MovieForm(Form response)
         {
-            _context.Forms.Add(response); //Adding the record
+            _context.Movies.Add(response); //Adding the record
             _context.SaveChanges();
 
             return View("Confirmation", response);
+        }
+        public IActionResult Collection()
+        {
+            var movieslist = _context.Movies
+                .OrderBy(x => x.Title).ToList();
+
+            return View(movieslist);
         }
     }
 }

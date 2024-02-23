@@ -9,7 +9,7 @@ using Mission06_Fisher.Models;
 
 namespace Mission06_Fisher.Migrations
 {
-    [DbContext(typeof(MovieFormContext))]
+    [DbContext(typeof(JoelHiltonMovieCollectionContext))]
     partial class MovieFormContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -54,7 +54,7 @@ namespace Mission06_Fisher.Migrations
 
                     b.HasKey("FormID");
 
-                    b.ToTable("Forms");
+                    b.ToTable("Forms", (string)null);
                 });
 #pragma warning restore 612, 618
         }
