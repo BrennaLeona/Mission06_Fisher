@@ -36,7 +36,7 @@ namespace Mission06_Fisher.Controllers
         }
         public IActionResult Collection()
         {
-            var movieslist = _context.Movies
+            var movieslist = _context.Movies//.Include("Categories")
                 .OrderBy(x => x.Title).ToList();
 
             return View(movieslist);
