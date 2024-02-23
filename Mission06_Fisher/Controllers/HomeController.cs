@@ -25,15 +25,31 @@ namespace Mission06_Fisher.Controllers
         [HttpGet]
         public IActionResult MovieForm()
         {
-            return View();
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+            
+            return View(new Movie());
         }
         [HttpPost]
         public IActionResult MovieForm(Movie response) //Form posts - adding a record
         {
-            _context.Movies.Add(response);
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _context.Movies.Add(response);
+                _context.SaveChanges();
 
-            return View("Confirmation", response);
+                return View("Confirmation", response);
+            }
+            else
+            {
+                ViewBag.Categories = _context.Categories
+                    .OrderBy(x => x.CategoryName)
+                    .ToList();
+
+                return View(response);
+            }
+            
         }
         public IActionResult Collection() //Display Collection from any other view
         {
@@ -41,6 +57,42 @@ namespace Mission06_Fisher.Controllers
                 .OrderBy(x => x.Title).ToList();
 
             return View(movieslist);
+        }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var recordToEdit = _context.Movies
+                .Single(x => x.MovieId == id);
+            
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+
+            return View("MovieForm", recordToEdit);
+        }
+        [HttpPost]
+        public IActionResult Edit(Movie updatedInfo)
+        {
+            _context.Update(updatedInfo);
+            _context.SaveChanges();
+
+            return RedirectToAction("Collection");
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var recordToDelete = _context.Movies
+                .Single(x => x.MovieId == id);
+
+            return View(recordToDelete);
+        }
+        [HttpPost]
+        public IActionResult Delete(Movie recordToDelete)
+        {
+            _context.Movies.Remove(recordToDelete);
+            _context.SaveChanges();
+
+            return RedirectToAction("Collection");
         }
     }
 }
