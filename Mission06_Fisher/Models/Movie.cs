@@ -6,6 +6,7 @@ namespace Mission06_Fisher.Models
     public class Movie
     {
         [Key]
+        [Required]
         public int MovieId { get; set; }
         [ForeignKey("Category")] //Connects to other class
         public int? CategoryId { get; set; }
